@@ -1,0 +1,30 @@
+<div class="timeline-container">
+  @for (hour of hours; track hour) { @if (appointments| async; as app) {
+  <div
+    class="hour-slot"
+    cdkDropList
+    [cdkDropListData]="app[hour]"
+    [cdkDropListConnectedTo]="connectedDropListsIds(hour)"
+    (cdkDropListDropped)="drop($event)"
+    [id]="hour"
+  >
+    <span class="time-label">{{ hour }}</span>
+    @for (appointment of app[hour]; track appointment) {
+    <div class="appointment-slot" cdkDrag cdkDragLockAxis="y">
+      <mat-card class="appointment-card">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-column">
+            <span class="fw-bold">{{ appointment.title }}</span>
+            <small>{{ appointment.time }}</small>
+          </div>
+
+          <button mat-icon-button (click)="deleteAppointment(appointment)">
+            <mat-icon fontIcon="delete"></mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+    }
+  </div>
+  } }
+</div>

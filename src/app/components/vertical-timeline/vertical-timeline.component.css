@@ -1,0 +1,37 @@
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh; /* or any specific height */
+    overflow-y: scroll;
+    border-left: 1px solid #ccc; /* Timeline bar */
+  }
+  
+  .hour-slot {
+    display: flex;
+    align-items: center;
+    height: 60px; /* Adjust according to preference */
+    border-top: 1px solid #ccc;
+    position: relative;
+  }
+  
+  .time-label {
+    width: 100px; /* Fixed width for time labels */
+    text-align: right;
+    padding-right: 10px;
+    color: #888;
+  }
+  
+  .appointment-slot {
+    flex: 1;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .appointment-card {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+  }
+  

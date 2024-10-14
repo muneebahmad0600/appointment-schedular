@@ -1,0 +1,65 @@
+<mat-dialog-content>
+  <form [formGroup]="appointmentForm">
+    <h5 class="mb-4">Add Appointment</h5>
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Title" formControlName="title" />
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Date"
+            formControlName="date"
+            readonly
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="-col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Time</mat-label>
+          <mat-select
+            matInput
+            name="time-slots"
+            id="appointment-time-slots"
+            formControlName="time"
+          >
+            @for (slot of timeSlots; track slot) {
+            <mat-option value="{{ slot }}">{{ slot }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="-col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            placeholder="Description"
+            formControlName="description"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    mat-dialog-close
+  >
+    Create
+  </button>
+</mat-dialog-actions>
